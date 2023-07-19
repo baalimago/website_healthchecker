@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Website HealthChecker</string>
+    <string name="dialog_title">Add new website to healthcheck list</string>
+    <string name="dialog_add">Add</string>
+    <string name="add_website">Add Website</string>
+    <string name="cancel">Cancel</string>
+    <string name="title">Website HealthChecker</string>
+    <string name="website_name">Name</string>
+    <string name="website_url">URL</string>
+    <string name="remove">Remove</string>
+    <string name="notification_channel_id_persistent">website-health-checker-persistent</string>
+    <string name="notification_channel_id_transient">website-health-checker-transient</string>
+    <string name="history">History</string>
+    <string name="edit">Edit</string>
+    <string name="last_check">Last check:</string>
+    <string name="http">http</string>
+    <string name="https">https</string>
+</resources>

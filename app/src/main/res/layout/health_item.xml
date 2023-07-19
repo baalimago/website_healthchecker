@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:contentPadding="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true">
+
+            <ImageView
+                android:id="@+id/healthIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar"
+                app:layout_constraintStart_toStartOf="@+id/progressBar"
+                app:layout_constraintTop_toTopOf="@+id/progressBar"
+                app:srcCompat="@drawable/baseline_check_24" />
+
+            <TextView
+                android:id="@+id/websiteName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WebsiteName"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toStartOf="@+id/unfoldCardBtn"
+                app:layout_constraintStart_toEndOf="@+id/progressBar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/unfoldCardBtn"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.585"
+                app:srcCompat="@android:drawable/arrow_down_float" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="@id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="70dp" />
+
+            <TextView
+                android:id="@+id/lastCheckField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="2023-07-31 20:38 CEST"
+                app:layout_constraintBottom_toBottomOf="@+id/downtimeCounterKey"
+                app:layout_constraintStart_toEndOf="@+id/downtimeCounterKey"
+                app:layout_constraintTop_toTopOf="@+id/downtimeCounterKey" />
+
+            <Button
+                android:id="@+id/downloadHistoryBtn"
+                android:layout_width="105dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/history"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/downtimeCounterKey" />
+
+            <Button
+                android:id="@+id/editHealthcheckBtn"
+                android:layout_width="105dp"
+                android:layout_height="40dp"
+                android:text="@string/edit"
+                app:layout_constraintBottom_toBottomOf="@+id/downloadHistoryBtn"
+                app:layout_constraintEnd_toStartOf="@+id/removeHealthcheckBtn"
+                app:layout_constraintStart_toEndOf="@+id/downloadHistoryBtn"
+                app:layout_constraintTop_toTopOf="@+id/downloadHistoryBtn" />
+
+            <Button
+                android:id="@+id/removeHealthcheckBtn"
+                android:layout_width="105dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/remove"
+                app:layout_constraintBottom_toBottomOf="@+id/editHealthcheckBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editHealthcheckBtn" />
+
+            <TextView
+                android:id="@+id/downtimeCounterKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/last_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/cardGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="downloadHistoryBtn,editHealthcheckBtn,removeHealthcheckBtn,downtimeCounterKey,lastCheckField,guideline,divider" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.imago.websitehealthcheck.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/content_main">
+        <action
+            android:id="@+id/action_mainFragment_to_addWebsiteFragment2"
+            app:destination="@id/addWebsiteFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_editWebsiteDialog"
+            app:destination="@id/editWebsiteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWebsiteFragment"
+        android:name="com.imago.websitehealthcheck.fragments.AddWebsiteFragment"
+        android:label="AddWebsiteFragment"
+        tools:layout="@layout/modify_website"/>
+    <fragment
+        android:id="@+id/editWebsiteFragment"
+        android:name="com.imago.websitehealthcheck.fragments.EditWebsiteFragment"
+        android:label="EditWebsiteDialog"
+        tools:layout="@layout/modify_website"/>
+</navigation>
