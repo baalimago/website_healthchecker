@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicReference
 class CheckingService : LifecycleService() {
     private val routineMap = ConcurrentHashMap<Long, Job>()
     private val previousHealthMap = mutableMapOf<Long, CheckResult>()
-    private var notificationId = 10;
+    private var notificationId = 10
     private val serviceScope = CoroutineScope(Dispatchers.Default)
     private lateinit var INSTANCE: CheckingService
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -61,6 +61,19 @@ class CheckingService : LifecycleService() {
         }
 
         INSTANCE = this
+        Thread {
+            run {
+                // Hack to attempt to restart cancelled routines due to Android's unconfigurable battery management
+                while (true) {
+                    Thread.sleep(10000)
+                    routineMap.forEach { (_, job) ->
+                        if(job.isCancelled) {
+                            job.start()
+                        }
+                    }
+                }
+            }
+        }.start()
     }
 
     private fun hasStateChanged(newResult: CheckResult): Boolean {
@@ -119,7 +132,7 @@ class CheckingService : LifecycleService() {
 
     }
 
-    fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+    private fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
         observe(lifecycleOwner, object : Observer<T> {
             override fun onChanged(value: T) {
                 observer.onChanged(value)
